@@ -46,11 +46,29 @@ export const pushTopic = (form, user) => {
       time: Date.now(),
       user: userObj
     }).then((snap) => {
-      dispatch(pushMessage(form.text, snap.key, user));
+      dispatch(pushFirstMessageInTopic(
+        form.text,
+        {title: form.title, key: snap.key},
+        userObj));
     }).catch((error) => {
       topicPushFailure(error)
     });
   };
+};
+
+const pushFirstMessageInTopic = (message, topic, user) => {
+  return (dispatch) => {
+    const ref = rootRef.child("topics/"+topicKey+"/messages");
+    ref.push({
+      text: message,
+      time: Date.now(),
+      user: user
+    }).then((snap) => {
+      dispatch(topicPushSuccess(topic))
+    }).catch((error) => {
+      dispatch(topicPushFailure(error))
+    });
+  }
 };
 
 export const fetchTopicsOrderByTime = () => {
@@ -95,9 +113,10 @@ const topicPush = () => {
   }
 };
 
-const topicPushSuccess = () => {
+const topicPushSuccess = (topic) => {
   return {
-    type: TOPIC_PUSH_SUCCESS
+    type: TOPIC_PUSH_SUCCESS,
+    topic: topic
   }
 };
 

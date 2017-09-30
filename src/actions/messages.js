@@ -78,7 +78,7 @@ const messagePush = () => {
 
 const messagePushSuccess = () => {
   return {
-    type: MESSAGE_PUSH_SUCCESS
+    type: MESSAGE_PUSH_SUCCESS,
   }
 };
 

@@ -7,7 +7,9 @@ const defaultState = {
   isLoading: false,
   topics: [],
   error: false,
-  errorMessage: ""
+  errorMessage: "",
+  pushSuccess: false,
+  topic: {}
 };
 
 const reducer = (state = defaultState, action) => {
@@ -33,7 +35,9 @@ const reducer = (state = defaultState, action) => {
       });
     case TOPIC_PUSH_SUCCESS:
       return Object.assign({}, state, {
-        isLoading: false
+        isLoading: false,
+        pushSuccess: true,
+        topic: action.topic
       });
     case TOPIC_PUSH_FAILURE:
       return Object.assign({}, state, {

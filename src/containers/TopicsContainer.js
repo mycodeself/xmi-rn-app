@@ -11,6 +11,8 @@ const mapStateToProps = (state, ownProps) => {
     topics: state.topics.topics,
     error: state.topics.error,
     errorMessage: state.topics.errorMessage,
+    pushSuccess: state.topics.pushSuccess,
+    topic: state.topics.topic,
   }
 };
 

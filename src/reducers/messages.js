@@ -8,7 +8,7 @@ const defaultState = {
   messages: [],
   pushError: false,
   fetchError: false,
-  errorMessage: ""
+  errorMessage: "",
 };
 
 const reducer = (state = defaultState, action) => {
@@ -25,7 +25,7 @@ const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         isLoading: false,
         pushError: true,
-        errorMessage: action.error.message
+        errorMessage: action.error.message,
       });
     case MESSAGES_FETCH:
       return Object.assign({}, state, {

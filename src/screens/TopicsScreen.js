@@ -28,6 +28,12 @@ class TopicsScreen extends React.Component {
     this.props.fetchTopics();
   }
 
+  componentWillReceiveProps() {
+    if(this.props.pushSuccess) {
+      this.props.navigation.navigate("Messages", this.props.topic)
+    }
+  }
+
   onSubmit(form) {
     this.props.pushTopic(form, this.props.user);
   }

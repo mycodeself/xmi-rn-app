@@ -67,9 +67,9 @@ export class HomeScreen extends React.Component {
             </HomeButton>
             <HomeButton
               icon="woman"
-              onPress={() => this.props.navigation.navigate("Testimony")}
+              onPress={() => this.props.navigation.navigate("Resources")}
             >
-              Testimonios
+              Recursos
             </HomeButton>
 
             <HomeButton

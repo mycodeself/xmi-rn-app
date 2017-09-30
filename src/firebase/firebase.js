@@ -22,6 +22,33 @@ export const fetch = (refName, callback) => {
   });
 };
 
+const fetchOrderByTime = (childRef, onSuccess, onError) => {
+  rootRef.child(childRef)
+    .orderByChild('time').on('value', (snap) => {
+    const data = [];
+    snap.forEach((child) => {
+      let item = child.val();
+      item.key = child.key;
+      data.push(item);
+    });
+    onSuccess(data);
+  }, (error) => {
+    onError(error);
+  })
+};
+
+export const fetchInfoResources = (onSuccess, onError) => {
+  fetchOrderByTime('resources/info', onSuccess, onError);
+};
+
+export const fetchVideosResources = (onSuccess, onError) => {
+  fetchOrderByTime('resources/videos', onSuccess, onError)
+};
+
+export const fetchStudiesResources = (onSuccess, onError) => {
+  fetchOrderByTime('resources/studies', onSuccess, onError);
+};
+
 export const fetchAssociations = (callback) => {
   const ref = rootRef.child('associations');
   ref.orderByChild('name').on("value", (snapshot) => {

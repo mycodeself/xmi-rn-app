@@ -2,8 +2,8 @@ import React from 'react'
 import {StyleSheet, View, Image,Text} from 'react-native'
 import {Container, Content, Spinner} from 'native-base'
 
-import { Header, Scroller, ChatInput, Message } from '../components'
-import {fetchCurrentDeviceMessages, pushMessage} from "../firebase/avmessages";
+import { Header, Scroller, ChatInput, Message } from '../../components/index'
+import {fetchCurrentDeviceMessages, pushMessage} from "../../firebase/avmessages";
 
 
 class AVChatScreen extends React.Component {
@@ -18,11 +18,9 @@ class AVChatScreen extends React.Component {
 
   componentWillMount() {
     this.setState({isLoading: true});
-    fetchCurrentDeviceMessages().then((messages) => {
-      this.setState({messages: messages, isLoading: false})
-    }).catch((error) => {
-      console.log(error);
-    });
+    fetchCurrentDeviceMessages((data) => {
+      this.setState({messages: data, isLoading: false})
+    }, (error) => console.log(error))
   }
 
 
@@ -36,7 +34,7 @@ class AVChatScreen extends React.Component {
         />
         <View style={styles.content}>
           <View style={styles.backgroundImage}>
-            <Image source={require('../../assets/images/chat-background.jpg')} />
+            <Image source={require('../../../assets/images/chat-background.jpg')} />
           </View>
           <Scroller>
 

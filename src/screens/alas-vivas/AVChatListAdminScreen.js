@@ -7,8 +7,8 @@ import {
   List,
 } from 'native-base'
 
-import {Header,AVChatListItem} from '../components';
-import {fetchAllMessagesForAdmin} from "../firebase/avmessages";
+import {Header,AVChatListItem} from '../../components/index';
+import {fetchAllMessagesForAdmin} from "../../firebase/avmessages";
 
 class AVChatListAdminScreen extends React.Component {
   constructor(props) {
@@ -32,15 +32,6 @@ class AVChatListAdminScreen extends React.Component {
         isLoading: false,
       })
     });
-
-  //   fetchAllMessagesForAdmin().then((data) => {
-  //     this.setState({
-  //       chats: data,
-  //       isLoading: false,
-  //     });
-  //   }).catch((error) => {
-  //     console.log(error)
-  //   })
   }
 
   render() {
@@ -56,7 +47,11 @@ class AVChatListAdminScreen extends React.Component {
         <Content style={{backgroundColor:"white"}}>
           <List
             dataArray={this.state.chats}
-            renderRow={(chat) => <AVChatListItem chat={chat} key={chat.key} />}
+            renderRow={(chat) => <AVChatListItem onPress={
+              () => {
+                this.props.navigation.navigate("AVChatAdmin", {deviceId: chat.key})
+              }
+            } chat={chat} key={chat.key} />}
           />
         </Content>
       </Container>

@@ -9,39 +9,20 @@ import colors from '../constants/colors'
 import dateFormatted from "../utils/dateFormatted";
 import {Avatar} from "./index";
 
-const Message = (props) => {
+const AVMessage = (props) => {
   const isOwnMessage = props.isOwnMessage;
   const styles = getStyles(isOwnMessage);
   return (
     <View style={styles.container} elevation={1}>
-      {
-        (!isOwnMessage)
-          ? <NoOwnMessageContent msg={props.msg}/>
-          : null
-      }
-    <Text style={styles.message}>
-      {props.msg.text}
-    </Text>
-    <Text style={styles.time}>
-      {dateFormatted(props.msg.time)}
-    </Text>
+      <Text style={styles.message}>
+        {props.msg.text}
+      </Text>
+      <Text style={styles.time}>
+        {dateFormatted(props.msg.time)}
+      </Text>
     </View>
   )
 };
-
-const NoOwnMessageContent = (props) => (
-  <View style={{flexDirection: "row"}}>
-    <Avatar small user={props.msg.user} />
-    <Text style={{
-      alignSelf: "flex-end",
-      fontSize: 12,
-      marginLeft: 6,
-      marginBottom: 10,
-    }}>
-      {props.msg.user.displayName} dice:
-    </Text>
-  </View>
-);
 
 
 
@@ -78,4 +59,4 @@ const getStyles = (isOwnMessage) => {
   });
 };
 
-export default Message
+export default AVMessage

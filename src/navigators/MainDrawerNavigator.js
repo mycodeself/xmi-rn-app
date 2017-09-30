@@ -10,6 +10,9 @@ import AuthStack from "./AuthStack";
 import ChatStack from './ChatStack'
 import ProfileScreen from "../containers/ProfileContainer";
 import AlasVivasStack from "./AlasVivasStack";
+import AVChatAdminScreen from "../screens/alas-vivas/AVChatAdminScreen";
+import AVChatListAdminScreen from "../screens/alas-vivas/AVChatListAdminScreen";
+import ResourcesTab from "./ResourcesTab";
 
 const MainDrawerNavigator = DrawerNavigator({
   Home: {
@@ -30,10 +33,10 @@ const MainDrawerNavigator = DrawerNavigator({
       )
     }
   },
-  Testimony: {
-    screen: TestimonyScreen,
+  Resources: {
+    screen: ResourcesTab,
     navigationOptions: {
-      title: "Testimonios",
+      title: "Recursos",
       drawerIcon: ({ tintColor }) => (
         <Icon name="woman" />
       )
@@ -73,7 +76,7 @@ const MainDrawerNavigator = DrawerNavigator({
       drawerIcon: ({ tintColor }) => (
         <Icon name="log-in" />
       )
-    }
+    },
   },
 }, {
   drawerWidth: 270,

@@ -8,8 +8,8 @@ import {
   H1
 } from 'native-base'
 
-import { Header } from '../components'
-import NewsList from "../components/NewsList";
+import { Header } from '../../components/index'
+import NewsList from "../../components/NewsList";
 
 const testNews = [
   {

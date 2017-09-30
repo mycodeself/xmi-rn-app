@@ -1,12 +1,33 @@
 import React from 'react'
-import { TabNavigator } from 'react-navigation'
+import { StackNavigator, TabNavigator } from 'react-navigation'
 import {Icon} from 'native-base'
 
-import AlasVivasScreen from "../screens/AlasVivasScreen";
-import AVInformationScreen from "../screens/AVInformationScreen";
-import AVChatScreen from "../screens/AVChatScreen";
+import {
+  AlasVivasScreen,
+  AVInformationScreen,
+  AVChatScreen,
+  AVChatListAdminScreen,
+  AVChatAdminScreen
+} from '../screens'
+
 import colors from '../constants/colors'
-import AVMessagesAdminScreen from "../screens/AVChatListAdminScreen";
+
+const AVAdminChatStack = StackNavigator({
+  AVChatListAdmin: {
+    screen: AVChatListAdminScreen,
+    navigationOptions: {
+      title: 'Mensajes',
+    },
+  },
+  AVChatAdmin: {
+    screen: AVChatAdminScreen,
+    navigationOptions: {
+      title: 'Habla',
+    }
+  }
+}, {
+  headerMode: 'none'
+});
 
 const AlasVivasStack = TabNavigator({
   AlasVivasHome: {
@@ -33,13 +54,8 @@ const AlasVivasStack = TabNavigator({
         <Icon style={{color: tintColor}} name="paper" />,
     },
   },
-  AVMessagesAdmin: {
-    screen: AVMessagesAdminScreen,
-    navigationOptions: {
-      title: 'Mensajes',
-      tabBarIcon: ({focused, tintColor}) =>
-        <Icon style={{color: tintColor}} name="paper" />,
-    },
+  AVAdminChat: {
+    screen: AVAdminChatStack
   }
 }, {
   tabBarPosition: 'bottom',
@@ -55,7 +71,7 @@ const AlasVivasStack = TabNavigator({
       backgroundColor: '#ffdcf9'
     }
   },
-  order: ['AVInformation', 'AlasVivasHome', 'AVChat', 'AVMessagesAdmin'],
+  order: ['AVInformation', 'AlasVivasHome', 'AVChat', 'AVAdminChat'],
   initialRouteName: 'AlasVivasHome'
 });
 

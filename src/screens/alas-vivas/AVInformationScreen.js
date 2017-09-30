@@ -2,7 +2,7 @@ import React from 'react'
 
 import {Container, Content} from 'native-base'
 
-import { Header } from '../components'
+import { Header } from '../../components/index'
 
 class AVInformationScreen extends React.Component {
 

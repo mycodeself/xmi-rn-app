@@ -1,5 +1,6 @@
 import {buildUserObject, rootRef} from '../firebase/firebase'
 import errorsTranslations from '../firebase/errorsTranslations'
+import {pushMessage} from "./messages";
 
 export const TOPICS_FETCH = 'TOPICS_FETCH';
 export const TOPICS_FETCH_SUCCESS = 'TOPICS_FETCH_SUCCESS';
@@ -9,8 +10,9 @@ export const TOPIC_PUSH_SUCCESS = 'TOPIC_PUSH_SUCCESS';
 export const TOPIC_PUSH_FAILURE = 'TOPIC_PUSH_FAILURE';
 export const TOPICS_ERROR_CLEAR = 'TOPICS_ERROR_CLEAR';
 
+const MAX_TITLE_LENGTH = 100;
 const MIN_TITLE_LENGTH = 10;
-const MIN_TEXT_LENGTH = 30;
+const MIN_TEXT_LENGTH = 35;
 
 const topicsRef = rootRef.child('topics');
 
@@ -41,11 +43,10 @@ export const pushTopic = (form, user) => {
     const userObj = buildUserObject(user);
     topicsRef.push({
       title: form.title,
-      text: form.text,
       time: Date.now(),
       user: userObj
-    }).then(() => {
-      dispatch(topicPushSuccess())
+    }).then((snap) => {
+      dispatch(pushMessage(form.text, snap.key, user));
     }).catch((error) => {
       topicPushFailure(error)
     });
@@ -77,12 +78,12 @@ const validateForm = (form) => {
   const error = {
     message: "",
   };
-  if(form.title.length < MIN_TITLE_LENGTH) {
-    error.message = "El título debe contener como mínimo "+MIN_TITLE_LENGTH+" carácteres";
+  if(form.title.length < MIN_TITLE_LENGTH || form.title.length > MAX_TITLE_LENGTH) {
+    error.message = "El título debe contener como mínimo "+MIN_TITLE_LENGTH+" carácteres y "+MAX_TITLE_LENGTH+" como máximo";
     return error;
   }
   if(form.text.length < MIN_TEXT_LENGTH) {
-    error.message = "El texto de la conversación debe contener como mínimo "+MIN_TEXT_LENGTH+" carácteres";
+    error.message = "El primer mensaje de la conversación debe contener como mínimo "+MIN_TEXT_LENGTH+" carácteres";
     return error;
   }
   return false;

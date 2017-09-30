@@ -24,14 +24,14 @@ class ChatTopicForm extends React.Component {
         <Item style={styles.item}>
           <Input
             onChangeText={(title) => this.setState({title: title})}
-            placeholder="¿De qué quieres hablar?"
+            placeholder="¿De qué quieres hablar? (max: 100)"
           />
         </Item>
         <Item style={styles.item}>
           <Input
             style={styles.multilineInput}
             multiline
-            placeholder="Inicia la conversación..."
+            placeholder="Inicia la conversación"
             onChangeText={(text) => this.setState({text: text})}
           />
         </Item>
@@ -40,7 +40,7 @@ class ChatTopicForm extends React.Component {
             block
             onPress={() => this.props.onSubmit(this.state)}
           >
-            Empezar a hablar
+            Empezar a conversar
           </Button>
         </View>
       </Form>

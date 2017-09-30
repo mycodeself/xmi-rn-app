@@ -1,8 +1,8 @@
 import React from 'react'
 import {WebView,View} from 'react-native'
-import {Container, Content, Spinner} from 'native-base'
+import {Container, Content} from 'native-base'
 
-import { Header } from '../components'
+import { Header, Spinner } from '../components'
 
 class WebViewScreen extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class WebViewScreen extends React.Component {
           title={this.title}
           left={{onPress: () => this.props.navigation.goBack(), icon: 'arrow-back'}}
         />
-          {(this.state.isLoading) ? <Spinner color="red" /> : null}
+          {(this.state.isLoading) ? <Spinner /> : null}
             <WebView
               source={{uri: this.uri}}
               onLoadStart={() => this.setState({isLoading: true})}

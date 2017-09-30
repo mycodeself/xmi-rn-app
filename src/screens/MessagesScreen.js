@@ -63,7 +63,12 @@ class MessagesScreen extends React.Component {
           </View>
           <Scroller>
             {this.props.messages.map(msg => {
-              return <Message key={msg.key} msg={msg} user={this.props.user} />
+              return <Message
+                key={msg.key}
+                msg={msg}
+                user={this.props.user}
+                isOwnMessage={this.props.user.uid === msg.user.uid}
+              />
             })}
           </Scroller>
           <ChatInput onSend={this.onSend.bind(this)}/>

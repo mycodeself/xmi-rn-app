@@ -5,14 +5,7 @@ import {List, ListItem, Thumbnail} from 'native-base'
 import dateFormatted from '../utils/dateFormatted'
 import {Avatar} from "./index";
 
-const MAX_TOPIC_TEXT_LENGTH = 80;
-
 const TopicItem = (props) => {
-  const text = (props.topic.text.length > MAX_TOPIC_TEXT_LENGTH)
-    ? props.topic.text.substring(0, MAX_TOPIC_TEXT_LENGTH)+"..."
-    : props.topic.text;
-
-
   return (
     <ListItem onPress={() =>
       props.navigation.navigate("Messages", {
@@ -24,9 +17,6 @@ const TopicItem = (props) => {
       <View style={styles.topicContainer}>
         <Text style={styles.title}>
           {props.topic.title}
-        </Text>
-        <Text style={styles.text}>
-          {text}
         </Text>
         <View>
           <Text style={styles.displayName}>

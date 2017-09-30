@@ -17,7 +17,7 @@ class AssociationDetailScreen extends React.Component {
           title={association.name}
           left={{onPress: () => this.props.navigation.goBack(), icon: 'arrow-back'}}
         />
-        <Content padder>
+        <Content style={{backgroundColor: '#F6F6F6'}} padder>
           <AssociationDetail navigation={this.props.navigation} association={ association } />
         </Content>
       </Container>

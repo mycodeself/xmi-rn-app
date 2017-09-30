@@ -4,17 +4,17 @@ import {ListItem, Left, Right, Body, Button, Icon} from 'native-base'
 import {removeMessagesByDeviceId} from "../firebase/avmessages";
 
 
-const AVChatListItem = (props) => (
-  <ListItem style={styles.listItem}>
+const AVChatListItem = ({chat, ...props}) => (
+  <ListItem {...props} style={styles.listItem}>
     <Left>
-      <Text>{props.chat.key}</Text>
+      <Text>{chat.key}</Text>
     </Left>
     <Body>
     </Body>
     <Right>
       <View style={styles.iconsContainer}>
-        {(!props.chat.read) ? <Icon style={styles.eyeIcon} name="eye"/> : null}
-        <TouchableOpacity onPress={() => removeMessagesByDeviceId(props.chat.key)}>
+        {(!chat.read) ? <Icon style={styles.eyeIcon} name="eye"/> : null}
+        <TouchableOpacity onPress={() => removeMessagesByDeviceId(chat.key)}>
           <Icon style={styles.trashIcon} name="trash"/>
         </TouchableOpacity>
       </View>

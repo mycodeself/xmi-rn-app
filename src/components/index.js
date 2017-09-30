@@ -11,6 +11,9 @@ export {default as Modal} from './Modal'
 export {default as TextLink} from './TextLink'
 export {default as Avatar} from './Avatar'
 export {default as Hr} from './Hr'
+export {default as LabelInput} from './LabelInput'
+export {default as Spinner} from './Spinner'
+export {default as ListToWebView} from './ListToWebView'
 // Home
 export { default as HomeButton } from './HomeButton'
 export { default as HelpVictimButton} from './HelpVictimButton'
@@ -18,9 +21,6 @@ export { default as HelpVictimButton} from './HelpVictimButton'
 export { default as AssociationsList } from './AssociationsList'
 export { default as AssociationDetail } from './AssociationDetail'
 export {default as AssociationMap} from './AssociationMap'
-// Testimony
-export {default as TestimonyItem } from './TestimonyItem'
-export {default as TestimoniesList} from './TestimoniesList'
 // Auth
 export {default as LoginForm} from './LoginForm'
 export {default as SignUpForm} from './SignUpForm'
@@ -32,3 +32,6 @@ export {default as Scroller} from './Scroller'
 export {default as Message} from './Message'
 // AlasVivas
 export {default as AVChatListItem} from './AVChatListItem'
+export {default as AVMessage} from './AVMessage'
+// Video Resources
+export {default as VideosList} from './VideosList'

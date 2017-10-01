@@ -6,6 +6,7 @@ import {
   Header, ListToWebView, Spinner
 } from "../../components/index";
 import {fetchInfoResources} from "../../firebase/firebase";
+import colors from "../../constants/colors";
 
 class InfoScreen extends React.Component {
 
@@ -39,7 +40,7 @@ class InfoScreen extends React.Component {
             icon: 'menu'
           }}
         />
-        <Content style={{backgroundColor: "white"}}>
+        <Content style={{backgroundColor: colors.contentBackgroundColor}}>
           {
             (this.state.isLoading)
               ? <Spinner />

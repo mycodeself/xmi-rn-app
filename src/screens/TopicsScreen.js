@@ -28,9 +28,10 @@ class TopicsScreen extends React.Component {
     this.props.fetchTopics();
   }
 
-  componentWillReceiveProps() {
-    if(this.props.pushSuccess) {
-      this.props.navigation.navigate("Messages", this.props.topic)
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.pushSuccess) {
+      this.setState({modalVisible: false});
+      this.props.navigation.navigate("Messages", {topic: nextProps.topic})
     }
   }
 
@@ -53,7 +54,7 @@ class TopicsScreen extends React.Component {
           title="Comunícate"
           left={{onPress: () => this.props.navigation.navigate("DrawerOpen"), icon: 'menu'}}
         />
-        <Content style={{backgroundColor:"white"}}>
+        <Content style={{backgroundColor:colors.contentBackgroundColor}}>
           <TopicList
             navigation={this.props.navigation}
             topics={this.props.topics}

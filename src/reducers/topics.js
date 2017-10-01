@@ -34,6 +34,9 @@ const reducer = (state = defaultState, action) => {
         isLoading: true
       });
     case TOPIC_PUSH_SUCCESS:
+      console.log("######################################")
+      console.log("TOPIC_PUSH_SUCCESS")
+      console.log("######################################")
       return Object.assign({}, state, {
         isLoading: false,
         pushSuccess: true,

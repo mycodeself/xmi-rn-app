@@ -8,6 +8,7 @@ import {
   ListToWebView
 } from "../../components/index";
 import {fetchStudiesResources} from "../../firebase/firebase";
+import colors from "../../constants/colors";
 
 class StudiesScreen extends React.Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class StudiesScreen extends React.Component {
             icon: 'menu'
           }}
         />
-        <Content style={{backgroundColor: "white"}}>
+        <Content style={{backgroundColor: colors.contentBackgroundColor}}>
           {
             (this.state.isLoading)
               ? <Spinner />

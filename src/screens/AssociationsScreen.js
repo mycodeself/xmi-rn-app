@@ -78,8 +78,8 @@ class AssociationsScreen extends React.Component {
           allDataOnEmptySearch
           placeholder="Buscar asociación"
         />
-        <Content>
-          <View style={styles.container}>
+        <Content style={{backgroundColor: colors.contentBackgroundColor}}>
+          <View>
             {
               (this.state.isDataLoaded) ?
                 <AssociationsList
@@ -120,9 +120,7 @@ class AssociationsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white"
-  },
+
   modalTitleText: {
     textAlign: 'center',
     fontSize: 16,

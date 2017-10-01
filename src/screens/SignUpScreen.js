@@ -11,6 +11,7 @@ import {
   SignUpForm,
   AlertMessage
 } from '../components'
+import colors from '../constants/colors'
 
 class SignUpScreen extends React.Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class SignUpScreen extends React.Component {
           title="Regístrate"
           left={{onPress: this.props.navigation.goBack(), icon: 'arrow-back'}}
         />
-        <Content padder style={{backgroundColor: "white"}}>
+        <Content padder style={{backgroundColor: colors.contentBackgroundColor}}>
           { (this.props.isLoading) ? <Spinner color="red" /> : null}
           <H1 style={{margin: 10}}>Crea tu cuenta...</H1>
           <SignUpForm onSubmit={this.props.signUp} />

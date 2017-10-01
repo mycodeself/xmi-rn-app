@@ -89,7 +89,7 @@ class LoginScreen extends React.Component {
 
 const styles = StyleSheet.create({
   content: {
-    backgroundColor: "white",
+    backgroundColor: colors.contentBackgroundColor,
   },
   title: {
     margin: 10,

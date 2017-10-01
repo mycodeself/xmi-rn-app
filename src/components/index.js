@@ -16,7 +16,7 @@ export {default as Spinner} from './Spinner'
 export {default as ListToWebView} from './ListToWebView'
 // Home
 export { default as HomeButton } from './HomeButton'
-export { default as HelpVictimButton} from './HelpVictimButton'
+export { default as TutorialSwiper} from './TutorialSwiper'
 // Association
 export { default as AssociationsList } from './AssociationsList'
 export { default as AssociationDetail } from './AssociationDetail'

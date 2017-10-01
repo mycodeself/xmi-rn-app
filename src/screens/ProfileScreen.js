@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   content: {
-    backgroundColor: "white"
+    backgroundColor: colors.contentBackgroundColor
   },
   container: {
     margin: 24,

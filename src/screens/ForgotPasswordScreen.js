@@ -18,6 +18,7 @@ import {
   Button,
   AlertMessage,
 } from '../components'
+import colors from '../constants/colors'
 
 class ForgotPasswordScreen extends React.Component {
 
@@ -65,7 +66,7 @@ class ForgotPasswordScreen extends React.Component {
             onPress: () => this.props.navigation.goBack()
           }}
         />
-        <Content padder style={{backgroundColor: "white"}}>
+        <Content padder style={{backgroundColor: colors.contentBackgroundColor}}>
           {
             (this.state.isLoading) ?
               <Spinner color="red" />

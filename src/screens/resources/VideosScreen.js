@@ -8,6 +8,7 @@ import {
   Spinner
 } from "../../components/index";
 import {fetchVideosResources} from "../../firebase/firebase";
+import colors from "../../constants/colors";
 
 class VideosScreen extends React.Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class VideosScreen extends React.Component {
             icon: 'menu'
           }}
         />
-        <Content style={{paddingBottom: 60, backgroundColor: '#F6F6F6'}} padder>
+        <Content style={{paddingBottom: 60, backgroundColor: colors.contentBackgroundColor}} padder>
           {
             (this.state.isLoading)
               ? <Spinner />

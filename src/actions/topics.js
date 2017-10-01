@@ -34,21 +34,22 @@ topicsRef.on('child_added', (snap, prevChildKey) => {
 
 export const pushTopic = (form, user) => {
   return (dispatch) => {
-    dispatch(topicPush());
+    // dispatch(topicPush());
     const error = validateForm(form);
     if(error) {
       dispatch(topicPushFailure(error));
       return;
     }
     const userObj = buildUserObject(user);
-    topicsRef.push({
+    const topicRef = topicsRef.push();
+    topicRef.set({
       title: form.title,
       time: Date.now(),
       user: userObj
-    }).then((snap) => {
+    }).then(() => {
       dispatch(pushFirstMessageInTopic(
         form.text,
-        {title: form.title, key: snap.key},
+        {title: form.title, key: topicRef.key},
         userObj));
     }).catch((error) => {
       topicPushFailure(error)
@@ -58,7 +59,7 @@ export const pushTopic = (form, user) => {
 
 const pushFirstMessageInTopic = (message, topic, user) => {
   return (dispatch) => {
-    const ref = rootRef.child("topics/"+topicKey+"/messages");
+    const ref = rootRef.child("topics/"+topic.key+"/messages");
     ref.push({
       text: message,
       time: Date.now(),

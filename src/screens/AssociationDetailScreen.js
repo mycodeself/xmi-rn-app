@@ -7,6 +7,7 @@ import {
   Header,
   AssociationMap
 } from '../components'
+import colors from "../constants/colors";
 
 class AssociationDetailScreen extends React.Component {
   render() {
@@ -17,7 +18,7 @@ class AssociationDetailScreen extends React.Component {
           title={association.name}
           left={{onPress: () => this.props.navigation.goBack(), icon: 'arrow-back'}}
         />
-        <Content style={{backgroundColor: '#F6F6F6'}} padder>
+        <Content style={{backgroundColor: colors.contentBackgroundColor}} padder>
           <AssociationDetail navigation={this.props.navigation} association={ association } />
         </Content>
       </Container>

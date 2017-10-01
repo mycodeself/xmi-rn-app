@@ -20,8 +20,16 @@ import {
   HomeButton,
 } from '../components'
 import colors from '../constants/colors'
+import {TutorialSwiper} from "../components/index";
 
 export class HomeScreen extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      showTutorial: true,
+    }
+  }
 
   componentWillMount() {
     this.props.onAuthStateChanged();
@@ -43,8 +51,9 @@ export class HomeScreen extends React.Component {
   }
 
   render() {
-    return (
+    if(this.state.showTutorial) return <TutorialSwiper />;
 
+    return (
       <Container>
         <Header
           title="XMI - Inicio"
@@ -93,7 +102,7 @@ export class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   content: {
-    backgroundColor: "white"
+    backgroundColor: colors.contentBackgroundColor
   },
   logoContainer: {
     alignItems: "center",

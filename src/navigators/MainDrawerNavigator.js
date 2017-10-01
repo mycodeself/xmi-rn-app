@@ -51,15 +51,15 @@ const MainDrawerNavigator = DrawerNavigator({
       )
     }
   },
-  AlasVivas: {
-    screen: AlasVivasStack,
-    navigationOptions: {
-      title: "Alas Vivas",
-      drawerIcon: ({ tintColor }) => (
-        <Icon name="contacts" />
-      )
-    }
-  },
+  // AlasVivas: {
+  //   screen: AlasVivasStack,
+  //   navigationOptions: {
+  //     title: "Alas Vivas",
+  //     drawerIcon: ({ tintColor }) => (
+  //       <Icon name="contacts" />
+  //     )
+  //   }
+  // },
   Profile: {
     screen: ProfileScreen,
     navigationOptions: {

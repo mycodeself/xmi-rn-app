@@ -27,12 +27,24 @@ export class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showTutorial: true,
+      showTutorial: false,
     }
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     this.props.onAuthStateChanged();
+    try {
+      const value = await AsyncStorage.getItem('@XMIStore:showTutorial');
+      if (value !== null){
+        // We have data!!
+        this.setState({showTutorial: value})
+      } else {
+        this.setState({showTutorial: true})
+      }
+    } catch (error) {
+      // Error retrieving data
+      this.setState({showTutorial: true})
+    }
   }
 
   renderRightInHeader() {
@@ -50,8 +62,17 @@ export class HomeScreen extends React.Component {
     }
   }
 
+  async onCloseTutorial() {
+    try {
+      await AsyncStorage.setItem('@XMIStore:showTutorial', false);
+      this.setState({showTutorial: false})
+    } catch (error) {
+      // Error saving data
+    }
+  }
+
   render() {
-    if(this.state.showTutorial) return <TutorialSwiper />;
+    if(this.state.showTutorial) return <TutorialSwiper onClose={() => {this.onCloseTutorial()}} />;
 
     return (
       <Container>
@@ -87,12 +108,25 @@ export class HomeScreen extends React.Component {
             >
               Conversaciones
             </HomeButton>
-            <HomeButton
-              icon="contacts"
-              onPress={() => this.props.navigation.navigate("AlasVivas")}
-            >
-              Alas Vivas
-            </HomeButton>
+
+            {
+              (this.props.isLoggedIn)
+                ?
+                <HomeButton
+                  icon="person"
+                  onPress={() => this.props.navigation.navigate("Profile")}
+                >
+                  Perfil
+                </HomeButton>
+                :
+                <HomeButton
+                  icon="log-in"
+                  onPress={() => this.props.navigation.navigate("Auth")}
+                >
+                  Únete
+                </HomeButton>
+            }
+
             </View>
         </Content>
       </Container>

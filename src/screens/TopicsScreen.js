@@ -51,14 +51,22 @@ class TopicsScreen extends React.Component {
     return (
       <Container>
         <Header
-          title="Comunícate"
+          title="Conversaciones"
           left={{onPress: () => this.props.navigation.navigate("DrawerOpen"), icon: 'menu'}}
         />
         <Content style={{backgroundColor:colors.contentBackgroundColor}}>
-          <TopicList
-            navigation={this.props.navigation}
-            topics={this.props.topics}
-          />
+          {
+            (this.props.topics.length > 0)
+              ?
+              <TopicList
+                navigation={this.props.navigation}
+                topics={this.props.topics}
+              />
+              :
+              <Text style={{textAlign: 'center', marginTop: 8, fontSize: 18}}>
+                No existen conversaciones actualmente... ¡Comienza una!
+              </Text>
+          }
         </Content>
         <SimpleFab
           icon="add"

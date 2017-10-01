@@ -30,8 +30,5 @@ export {default as ChatTopicForm} from './ChatTopicForm'
 export {default as TopicList} from './TopicList'
 export {default as Scroller} from './Scroller'
 export {default as Message} from './Message'
-// AlasVivas
-export {default as AVChatListItem} from './AVChatListItem'
-export {default as AVMessage} from './AVMessage'
 // Video Resources
 export {default as VideosList} from './VideosList'

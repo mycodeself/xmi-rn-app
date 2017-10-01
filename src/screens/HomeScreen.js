@@ -3,6 +3,7 @@ import {
   View,
   StyleSheet,
   Image,
+  AsyncStorage
 } from 'react-native'
 import {
   Container,
@@ -31,20 +32,9 @@ export class HomeScreen extends React.Component {
     }
   }
 
-  async componentWillMount() {
+  componentWillMount() {
     this.props.onAuthStateChanged();
-    try {
-      const value = await AsyncStorage.getItem('@XMIStore:showTutorial');
-      if (value !== null){
-        // We have data!!
-        this.setState({showTutorial: value})
-      } else {
-        this.setState({showTutorial: true})
-      }
-    } catch (error) {
-      // Error retrieving data
-      this.setState({showTutorial: true})
-    }
+    this.loadStorage();
   }
 
   renderRightInHeader() {
@@ -62,12 +52,28 @@ export class HomeScreen extends React.Component {
     }
   }
 
+  async loadStorage() {
+    try {
+      const value = await AsyncStorage.getItem('@XMIStore:showTutorial');
+      if ('false' === value){
+        this.setState({showTutorial: false})
+      } else {
+        this.setState({showTutorial: true})
+      }
+    } catch (error) {
+      this.setState({showTutorial: true})
+    }
+  }
+
   async onCloseTutorial() {
     try {
-      await AsyncStorage.setItem('@XMIStore:showTutorial', false);
+      await AsyncStorage.setItem('@XMIStore:showTutorial', 'false');
       this.setState({showTutorial: false})
     } catch (error) {
       // Error saving data
+      console.log("###############################ERROR")
+      console.log(error)
+      console.log("###############################")
     }
   }
 

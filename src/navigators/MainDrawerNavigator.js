@@ -9,9 +9,6 @@ import AssociationStack from './AssociationStack'
 import AuthStack from "./AuthStack";
 import ChatStack from './ChatStack'
 import ProfileScreen from "../containers/ProfileContainer";
-import AlasVivasStack from "./AlasVivasStack";
-import AVChatAdminScreen from "../screens/alas-vivas/AVChatAdminScreen";
-import AVChatListAdminScreen from "../screens/alas-vivas/AVChatListAdminScreen";
 import ResourcesTab from "./ResourcesTab";
 
 const MainDrawerNavigator = DrawerNavigator({
@@ -51,15 +48,6 @@ const MainDrawerNavigator = DrawerNavigator({
       )
     }
   },
-  // AlasVivas: {
-  //   screen: AlasVivasStack,
-  //   navigationOptions: {
-  //     title: "Alas Vivas",
-  //     drawerIcon: ({ tintColor }) => (
-  //       <Icon name="contacts" />
-  //     )
-  //   }
-  // },
   Profile: {
     screen: ProfileScreen,
     navigationOptions: {

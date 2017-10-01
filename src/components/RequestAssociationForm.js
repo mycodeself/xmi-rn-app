@@ -2,6 +2,7 @@ import React from 'react'
 import {StyleSheet,Text} from 'react-native'
 import {Form,Input, Item} from 'native-base'
 import {Button} from "./index";
+import validateEmail from "../utils/validateEmail";
 
 
 class RequestAssociationForm extends React.Component {
@@ -32,7 +33,7 @@ class RequestAssociationForm extends React.Component {
       errorFields['contact'] = true;
       isValid = false;
     }
-    if(this.state.userEmail.length < 3){ // TODO: VALIDATE EMAIL
+    if(this.state.userEmail.length < 3 && validateEmail(this.state.userEmail)){
       errorFields['userEmail'] = true;
       isValid = false;
     }

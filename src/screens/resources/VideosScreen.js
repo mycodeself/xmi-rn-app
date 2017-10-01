@@ -29,7 +29,7 @@ class VideosScreen extends React.Component {
     }, (error) => {
       //TODO: HANDLE ERROR
       this.setState({
-        isLoading: false,
+        isLoading: true,
       })
     })
   }

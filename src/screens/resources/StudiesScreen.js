@@ -28,6 +28,7 @@ class StudiesScreen extends React.Component {
       })
     }, (error) => {
       // TODO: handle error
+      this.setState({isLoading: true});
     })
   }
 

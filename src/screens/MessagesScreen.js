@@ -31,7 +31,6 @@ class MessagesScreen extends React.Component {
   }
 
   componentWillMount() {
-    //TODO: UNCOMMENT SECURITY GUARD
     if(!this.props.isLoggedIn){
       this.props.navigation.navigate("Auth");
       return;

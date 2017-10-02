@@ -36,8 +36,8 @@ class InfoScreen extends React.Component {
         <Header
           title="Información"
           left={{
-            onPress: () => this.props.navigation.navigate("DrawerOpen"),
-            icon: 'menu'
+            onPress: () => this.props.navigation.navigate("Home"),
+            icon: 'arrow-back'
           }}
         />
         <Content style={{backgroundColor: colors.contentBackgroundColor}}>

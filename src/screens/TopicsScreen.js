@@ -52,7 +52,7 @@ class TopicsScreen extends React.Component {
       <Container>
         <Header
           title="Conversaciones"
-          left={{onPress: () => this.props.navigation.navigate("DrawerOpen"), icon: 'menu'}}
+          left={{onPress: () => this.props.navigation.goBack(), icon: 'arrow-back'}}
         />
         <Content style={{backgroundColor:colors.contentBackgroundColor}}>
           {

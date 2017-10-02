@@ -27,7 +27,7 @@ class SignUpScreen extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.emailVerificationSent) {
+    if(nextProps.emailVerificationSent && !nextProps.isLoggedIn) {
       this.props.navigation.navigate("Login")
     }
   }
@@ -38,7 +38,7 @@ class SignUpScreen extends React.Component {
         <Header
           back
           title="Regístrate"
-          left={{onPress: this.props.navigation.goBack(), icon: 'arrow-back'}}
+          left={{onPress: () => this.props.navigation.goBack(), icon: 'arrow-back'}}
         />
         <Content padder style={{backgroundColor: colors.contentBackgroundColor}}>
           { (this.props.isLoading) ? <Spinner color="red" /> : null}

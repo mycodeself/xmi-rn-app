@@ -40,8 +40,8 @@ class VideosScreen extends React.Component {
         <Header
           title="Vídeos"
           left={{
-            onPress: () => this.props.navigation.navigate("DrawerOpen"),
-            icon: 'menu'
+            onPress: () => this.props.navigation.navigate("Home"),
+            icon: 'arrow-back'
           }}
         />
         <Content style={{paddingBottom: 60, backgroundColor: colors.contentBackgroundColor}} padder>

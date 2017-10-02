@@ -38,8 +38,8 @@ class StudiesScreen extends React.Component {
         <Header
           title="Estudios"
           left={{
-            onPress: () => this.props.navigation.navigate("DrawerOpen"),
-            icon: 'menu'
+            onPress: () => this.props.navigation.navigate("Home"),
+            icon: 'arrow-back'
           }}
         />
         <Content style={{backgroundColor: colors.contentBackgroundColor}}>

@@ -61,10 +61,7 @@ class AssociationsScreen extends React.Component {
         <Header
           style={{elevation: 1}}
           title="Asociaciones"
-          left={{
-            onPress: () => this.props.navigation.navigate("DrawerOpen"),
-            icon: 'menu'
-          }}
+          left={{onPress: () => this.props.navigation.navigate("Home"), icon: 'arrow-back'}}
           right={{
             icon: "search",
             onPress: () => (this.searchBar) ? this.searchBar.show() : null

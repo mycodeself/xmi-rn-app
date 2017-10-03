@@ -27,7 +27,7 @@ class SignUpScreen extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.emailVerificationSent && !nextProps.isLoggedIn) {
+    if(nextProps.emailVerificationSent || nextProps.errorCode === 'auth/email-not-verified') {
       this.props.navigation.navigate("Login")
     }
   }

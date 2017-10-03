@@ -62,6 +62,7 @@ export const onAuthStateChanged = () => {
       if(user) {
         if(!user.emailVerified) {
           user.sendEmailVerification();
+          auth.signOut();
           dispatch(authError({
             code: "auth/email-not-verified"
           }))
@@ -108,6 +109,7 @@ const signUpUserWithEmailAndPassword = (form) => {
 
 export const signUp = (form) => {
   return (dispatch) => {
+    dispatch(authLoading());
     if(error = preSignUpValidate(form)) {
       dispatch(authError(error))
     } else {

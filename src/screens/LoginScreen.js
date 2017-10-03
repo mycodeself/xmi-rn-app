@@ -31,7 +31,6 @@ class LoginScreen extends React.Component {
     if(this.props.isLoggedIn) {
       this.props.navigation.navigate("Home");
     }
-    this.cleanPreviousError();
   }
 
   componentWillReceiveProps(nextProps) {

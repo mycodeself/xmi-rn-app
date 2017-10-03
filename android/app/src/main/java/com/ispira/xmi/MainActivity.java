@@ -1,4 +1,4 @@
-package com.xmi;
+package com.ispira.xmi;
 
 import com.facebook.react.ReactActivity;
 
